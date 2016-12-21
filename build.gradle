@@ -1,0 +1,53 @@
+buildscript {
+	ext {
+		springBootVersion = '1.4.2.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath 'org.flywaydb:flyway-gradle-plugin:3.1'
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'flyway'
+
+jar {
+	baseName = 'dojo-ci-web'
+	version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	compile 'org.springframework.boot:spring-boot-starter'
+	compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	compile "org.springframework.boot:spring-boot-starter-web"
+	compile "org.springframework.boot:spring-boot-starter-data-jpa"
+	compile 'org.springframework.boot:spring-boot-starter-security'
+
+
+	compile 'postgresql:postgresql:9.0-801.jdbc4'
+	compile 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
+	compile 'org.codehaus.jackson:jackson-core-asl:1.9.13'
+
+	compile "com.google.code.gson:gson:2.3.1"
+	compile 'commons-codec:commons-codec:1.10'
+
+
+	testCompile 'org.springframework.boot:spring-boot-starter-test'
+}
+
+
+flyway {
+	url = 'jdbc:postgresql://localhost/dojo-ci-web'
+}
