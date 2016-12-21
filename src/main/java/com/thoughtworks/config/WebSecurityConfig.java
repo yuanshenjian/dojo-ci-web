@@ -13,7 +13,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
     @Value("${cookie.session-id}")
     private String cookieSessionId;
 
@@ -25,8 +24,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().xssProtection()
                 .and().httpStrictTransportSecurity().and().and()
                 .authorizeRequests()
-                .antMatchers("/", "/home").permitAll()
-                .antMatchers("/css/**").permitAll()
+                .antMatchers("/css/**", "/").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

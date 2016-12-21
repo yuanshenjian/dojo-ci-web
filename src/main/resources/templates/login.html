@@ -4,7 +4,7 @@
     <title>Login</title>
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
 </head>
-<body onload="document.form.username.focus();">
+<body onload="document.form.name.focus();">
 <div class="container">
     <div class="navbar">
         <div class="navbar-inner">
@@ -24,7 +24,7 @@
 
         <form name="form" th:action="@{/login}" action="/login" method="POST">
             <fieldset>
-                <input type="text" name="username" value="" placeholder="Username"/>
+                <input type="text" name="name" value="" placeholder="Username"/>
                 <input type="password" name="password" placeholder="Password"/>
             </fieldset>
             <input type="submit" id="login" value="Login"
