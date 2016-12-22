@@ -37,10 +37,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        LOGGER.info(userRepository.findAll().toString());
         User user = userRepository.findByName(username);
-        LOGGER.info("username = " + username);
-        LOGGER.info(user.toString());
         List<Role> roles = roleRepository.findByUser(user);
         user.setRoles(roles);
         return user;
