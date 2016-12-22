@@ -11,7 +11,13 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String name;
+
+    @Enumerated(EnumType.STRING)
+    private Name name;
+
+    public enum Name {
+        ADMIN
+    }
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -25,11 +31,11 @@ public class Role {
         this.id = id;
     }
 
-    public String getName() {
+    public Name getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Name name) {
         this.name = name;
     }
 
