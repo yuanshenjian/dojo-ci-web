@@ -20,10 +20,6 @@ public class UserController {
     @RequestMapping(value = "users",
             method = RequestMethod.GET)
     public List<User> getAll() throws IOException, SQLException {
-        User user = new User();
-        user.setName("sjyuan");
-        List<User> result  = new ArrayList<>();
-        result.add(user);
         return userService.findAll();
     }
 }
