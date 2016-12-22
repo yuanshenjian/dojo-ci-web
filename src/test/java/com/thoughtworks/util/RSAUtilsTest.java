@@ -30,7 +30,7 @@ public class RSAUtilsTest {
     }
 
     @Test
-    public void test_should_generate_keypair_when_default_size() throws Exception {
+    public void should_generate_keypair_when_default_size() throws Exception {
         KeyPair keyPair = RSAUtils.generateKeyPair();
         PublicKey publicKey = keyPair.getPublic();
         PrivateKey privateKey = keyPair.getPrivate();
@@ -40,7 +40,7 @@ public class RSAUtilsTest {
     }
 
     @Test
-    public void test_should_generate_key_pair() throws Exception {
+    public void should_generate_key_pair() throws Exception {
         KeyPair keyPair = RSAUtils.generateKeyPair(RSAUtils.KEY_SIZE_2048);
         PublicKey publicKey = keyPair.getPublic();
         PrivateKey privateKey = keyPair.getPrivate();
@@ -50,33 +50,33 @@ public class RSAUtilsTest {
     }
 
     @Test
-    public void test_should_get_base64_public_key() throws Exception {
+    public void should_get_base64_public_key() throws Exception {
         String publicKeyString = RSAUtils.getBase64PublicKey(publicKey);
         assertEquals(publicKey, RSAUtils.getPublicKey(publicKeyString));
     }
 
     @Test
-    public void test_should_get_base64_private_key() throws Exception {
+    public void should_get_base64_private_key() throws Exception {
         String privateKeyString = RSAUtils.getBase64PrivateKey(privateKey);
         assertEquals(privateKey, RSAUtils.getPrivateKey(privateKeyString));
     }
 
     @Test
-    public void test_should_get_public_key_from_big_integer() throws Exception {
+    public void should_get_public_key_from_big_integer() throws Exception {
         BigInteger modulus = new BigInteger(publicKey.getEncoded());
         BigInteger exponent = new BigInteger("65573");
         assertNotNull(RSAUtils.getPublicKey(modulus, exponent));
     }
 
     @Test
-    public void test_should_get_private_key_from_big_integer() throws Exception {
+    public void should_get_private_key_from_big_integer() throws Exception {
         BigInteger modulus = new BigInteger(privateKey.getEncoded());
         BigInteger exponent = new BigInteger("65573");
         assertNotNull(RSAUtils.getPrivateKey(modulus, exponent));
     }
 
     @Test
-    public void test_should_encrypt_as_byte_array() throws Exception {
+    public void should_encrypt_as_byte_array() throws Exception {
         String encryptData = "Chinese people";
         LOGGER.info("Encrypt data = {}", encryptData);
         byte[] encryptedData = RSAUtils.encryptAsByteArray(encryptData, publicKey);
@@ -86,7 +86,7 @@ public class RSAUtilsTest {
     }
 
     @Test
-    public void test_should_encrypt_as_string() throws Exception {
+    public void should_encrypt_as_string() throws Exception {
         String encryptData = "Chinese people";
         LOGGER.info("Encrypt data = {}", encryptData);
         String encryptedData = RSAUtils.encryptAsString(encryptData, publicKey);

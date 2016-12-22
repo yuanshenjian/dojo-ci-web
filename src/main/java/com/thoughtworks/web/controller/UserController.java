@@ -24,6 +24,6 @@ public class UserController {
         user.setName("sjyuan");
         List<User> result  = new ArrayList<>();
         result.add(user);
-        return userService.getAll();
+        return userService.findAll();
     }
 }

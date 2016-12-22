@@ -18,7 +18,7 @@ public class User implements UserDetails {
     private String password;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<UserRole> roles;
+    private List<Role> roles;
 
     private int age;
     private String phone;
@@ -69,11 +69,11 @@ public class User implements UserDetails {
         this.sex = sex;
     }
 
-    public List<UserRole> getRoles() {
+    public List<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<UserRole> roles) {
+    public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
 
@@ -83,8 +83,8 @@ public class User implements UserDetails {
             return AuthorityUtils.commaSeparatedStringToAuthorityList("");
         }
         StringBuilder commaBuilder = new StringBuilder();
-        for (UserRole role : roles) {
-            commaBuilder.append(role.getRole()).append(",");
+        for (Role role : roles) {
+            commaBuilder.append(role.getName()).append(",");
         }
         String authorities = commaBuilder.substring(0, commaBuilder.length() - 1);
         return AuthorityUtils.commaSeparatedStringToAuthorityList(authorities);

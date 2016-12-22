@@ -3,12 +3,11 @@ package com.thoughtworks.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user_role")
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String role;
+    private String name;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -22,12 +21,12 @@ public class Role {
         this.id = id;
     }
 
-    public String getRole() {
-        return role;
+    public String getName() {
+        return name;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public User getUser() {

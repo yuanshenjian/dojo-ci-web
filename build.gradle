@@ -49,5 +49,8 @@ dependencies {
 
 
 flyway {
+	driver = 'org.postgresql.Driver'
 	url = 'jdbc:postgresql://localhost/dojo-ci-web'
+	user = 'dojo-ci'
+	password = 'dojo-ci'
 }
