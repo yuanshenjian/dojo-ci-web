@@ -25,6 +25,8 @@ public class User implements UserDetails {
 
     private int age;
     private String phone;
+
+    @Enumerated(EnumType.STRING)
     private Sex sex;
 
     public enum Sex {

@@ -28,6 +28,7 @@ public class DojoCiWebApplication {
         user.setSex(User.Sex.MALE);
         user.setName("sjyuan");
         user.setPassword("000");
+        user.setPhone("18192235667");
 
         Role role = new Role();
         role.setUser(user);
