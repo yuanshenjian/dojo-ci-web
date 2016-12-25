@@ -39,11 +39,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .usernameParameter("username")
                 .passwordParameter("password")
-                .loginPage("/login").failureUrl("/login?error").permitAll()
+                .loginPage("/login")
+                .defaultSuccessUrl("/users")
+                .failureUrl("/login?error")
+                .permitAll()
                 .and()
                 .logout()
                 .deleteCookies(cookieSessionId)
-                .permitAll();
+                .permitAll()
+                .and().csrf().disable();
     }
 
     @Autowired

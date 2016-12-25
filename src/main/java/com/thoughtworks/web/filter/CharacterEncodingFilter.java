@@ -1,7 +1,6 @@
 package com.thoughtworks.web.filter;
 
 
-import com.thoughtworks.util.EncodingUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -12,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 @Component
 public class CharacterEncodingFilter extends OncePerRequestFilter {
@@ -20,8 +20,8 @@ public class CharacterEncodingFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
-        request.setCharacterEncoding(EncodingUtils.UTF_8);
-        response.setCharacterEncoding(EncodingUtils.UTF_8);
+        request.setCharacterEncoding(StandardCharsets.UTF_8.toString());
+        response.setCharacterEncoding(StandardCharsets.UTF_8.toString());
         filterChain.doFilter(request, response);
     }
 }

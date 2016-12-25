@@ -4,19 +4,15 @@ import com.thoughtworks.web.interceptor.SessionInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.*;
 
 @Configuration
 public class WebMvcConfig {
     @Autowired
     private SessionInterceptor sessionInterceptor;
 
-
     @Bean
-    public WebMvcConfigurerAdapter webMvcConfigurerAdapter() {
+    public WebMvcConfigurer webMvcConfigurerAdapter() {
         return new WebMvcConfigurerAdapter() {
             @Override
             public void addViewControllers(ViewControllerRegistry registry) {
@@ -35,7 +31,12 @@ public class WebMvcConfig {
             public void addInterceptors(InterceptorRegistry registry) {
                 registry.addInterceptor(sessionInterceptor).addPathPatterns("/**").excludePathPatterns("/login");
             }
+
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**").allowCredentials(true)
+                        .allowedOrigins("*").allowedMethods("POST", "DELETE");
+            }
         };
     }
-
 }

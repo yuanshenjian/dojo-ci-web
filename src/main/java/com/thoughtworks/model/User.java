@@ -34,6 +34,14 @@ public class User implements UserDetails {
         FEMALE
     }
 
+    public User() {
+    }
+
+    public User(String name, String password) {
+        this.name = name;
+        this.password = password;
+    }
+
     public Long getId() {
         return id;
     }
