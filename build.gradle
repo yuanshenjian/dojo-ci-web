@@ -16,7 +16,9 @@ apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'flyway'
 apply plugin: "jacoco"
+apply plugin: 'com.github.kt3k.coveralls:2.6.3'
 
+cobertura.coverageFormats = ['html', 'xml'] // coveralls plugin depends on xml format report
 
 jacoco {
     toolVersion = "0.7.6.201602180812"
@@ -58,7 +60,8 @@ dependencies {
 
 jacocoTestReport {
     reports {
-        xml.enabled false
+        xml.enabled true
+        html.enabled true
         csv.enabled false
     }
     afterEvaluate {
