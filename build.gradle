@@ -18,6 +18,7 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'flyway'
 apply plugin: "jacoco"
 apply plugin: 'coveralls'
+apply plugin: 'war'
 
 jacoco {
     toolVersion = "0.7.6.201602180812"
@@ -28,6 +29,14 @@ jar {
     baseName = 'dojo-ci-web'
     version = '0.0.1-SNAPSHOT'
 }
+
+
+war {
+    baseName = 'dojo-ci-web'
+    version =  '0.0.1'
+}
+
+
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
@@ -55,6 +64,8 @@ dependencies {
 
 
     testCompile 'org.springframework.boot:spring-boot-starter-test'
+
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 }
 
 jacocoTestReport {

@@ -7,14 +7,22 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootApplication
-public class DojoCiWebApplication {
+public class DojoCiWebApplication extends SpringBootServletInitializer {
     private static final Logger LOGGER = LoggerFactory.getLogger(DojoCiWebApplication.class);
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(DojoCiWebApplication.class);
+    }
+
 
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(DojoCiWebApplication.class, args);
